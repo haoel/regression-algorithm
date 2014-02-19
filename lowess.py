@@ -51,42 +51,33 @@ def lowess(x, y, f=2./3., iter=3):
         delta = (1 - delta**2)**2
  
     return smoothy
- 
+
+def savePng(x, raw_y, smooth_ys, smooth_factor, file):
+    import matplotlib
+    matplotlib.use('Agg')
+
+    import matplotlib.pyplot as plt
+    fig = plt.gcf()
+    fig.set_size_inches(22.5,4.5)
+
+    import pylab as pl
+    pl.clf()
+    pl.plot(x, raw_y, label='Raw Data')
+    for i in range(len(smooth_ys)):
+        pl.plot(x, smooth_ys[i], label='Smooth('+str(smooth_factor[i])+')')
+    pl.legend()
+    pl.savefig(file)
+
+
+
 if __name__ == '__main__':
     #pdb.set_trace() 
-    import json
-    with open("host2.json") as json_data:
-        d = json.load(json_data)
-        json_data.close()
+    from readjson import read_json
+    cpu, cpu_time, mem, mem_time, load, load_time = read_json("host1.json")
     
-    #result = d['resultData']["t172021094005.cm3"]["0xilovexxx"] 
-    result = d['resultData'] 
-    for k, v in result.iteritems():
-        result = v 
-        break;
-    for k, v in result.iteritems():
-        result = v 
-        break;
 
-    cpu = sorted(result["cpu"].items())
-    mem = sorted(result["mem"].items())
-    load = sorted(result["load5"].items())
-    
-    from datetime import datetime
-    import time
-    cpu_list = [] 
-    time_list = [] 
-    for item in load:
-        t = time.mktime(datetime.strptime(item[0], "%Y-%m-%d %H:%M:%S").timetuple())
-        time_list.append( t )
-        cpu_list.append(float(item[1]))
-
-    x = time_list
-    for i in range(len(x)):
-        x[i] = x[i]
-
-    x = np.asarray(x)
-    y = cpu_list
+    x = np.asarray(cpu_time)
+    y = cpu
     n = len(y)    
 
  
@@ -100,18 +91,5 @@ if __name__ == '__main__':
         smoothy.append( lowess(x, y, f=base, iter=1) )
 
 
-    import matplotlib
-    matplotlib.use('Agg')
-
-    import matplotlib.pyplot as plt
-    fig = plt.gcf()
-    fig.set_size_inches(22.5,4.5)
-
-    import pylab as pl
-    pl.clf()
-    pl.plot(x, y, label='Raw Data')
-    for i in range(len(smoothy)):
-        pl.plot(x, smoothy[i], label='Smooth('+str(f[i])+')')
-    pl.legend()
-    pl.savefig('myfig')
+    savePng(x, y, smoothy, f, "lowess")
 
