@@ -60,7 +60,14 @@ if __name__ == '__main__':
         json_data.close()
     
     #result = d['resultData']["t172021094005.cm3"]["0xilovexxx"] 
-    result = d['resultData']["t172021095009.cm3"]["0xilovexxx"] 
+    result = d['resultData'] 
+    for k, v in result.iteritems():
+        result = v 
+        break;
+    for k, v in result.iteritems():
+        result = v 
+        break;
+
     cpu = sorted(result["cpu"].items())
     mem = sorted(result["mem"].items())
     load = sorted(result["load5"].items())
@@ -85,10 +92,12 @@ if __name__ == '__main__':
  
     #f = 0.25
     smoothy = []
-    f = 0.005
+    f = []
+    base = 0.005
     for i in range(8):
-        f = f + i*0.015
-        smoothy.append( lowess(x, y, f=f, iter=1) )
+        base = base + i*0.015
+        f.append(base)
+        smoothy.append( lowess(x, y, f=base, iter=1) )
 
 
     import matplotlib
@@ -102,8 +111,7 @@ if __name__ == '__main__':
     pl.clf()
     pl.plot(x, y, label='Raw Data')
     for i in range(len(smoothy)):
-        pl.plot(x, smoothy[i], label='Smoothing '+str(i))
+        pl.plot(x, smoothy[i], label='Smooth('+str(f[i])+')')
     pl.legend()
-    #pl.show()
     pl.savefig('myfig')
 
