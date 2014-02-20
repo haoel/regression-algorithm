@@ -15,7 +15,7 @@ from scipy import stats
 #print (xi, A, y)
 
 from readjson import read_json
-cpu, cpu_time, mem, mem_time, load, load_time = read_json("host1.json")
+cpu, cpu_time, mem, mem_time, load, load_time = read_json("host2.json")
 
 xi = asarray(cpu_time)
 y = cpu
@@ -37,7 +37,7 @@ fig = plt.gcf()
 fig.set_size_inches(22.5,4.5)
 
 
-plot(xi,line,'r-',xi,y,'o')
+plot(xi,line,'r-',xi,y,'b-')
 
 savefig("liner")
 
