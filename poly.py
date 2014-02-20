@@ -16,6 +16,7 @@ n = len(y)
 p = poly1d( polyfit(x,y,3) )
 
 print p
+print p(x[1])
 
 
 
@@ -23,11 +24,9 @@ import matplotlib.pyplot as plt
 fig = plt.gcf()
 fig.set_size_inches(22.5,4.5)
 
-#plot(x,y,'bo', xx,fp(real_p,xx),'g', xx, fp(p,xx),'r')
-plot(x,y,label="raw data")
-plot(x,p(x),label="polyfit")
-#plot(xx,fp(real_p,xx),'g', label="fmin1")
-#plot(xx, fp(p,xx),'r', label="fmin2")
+plot(x, y,    label="raw data")
+plot(x, p(x), label="polyfit")
+
 legend()
 
 savefig("poly")
