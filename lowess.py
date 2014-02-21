@@ -97,6 +97,7 @@ def savePng(x, raw_y, smooth_ys, smooth_factor, file):
         pl.plot(x, smooth_ys[i], label='Smooth('+str(smooth_factor[i])+')')
     pl.legend()
     pl.savefig(file)
+    print "Successfully created picture file lowess.png"
 
 
 
