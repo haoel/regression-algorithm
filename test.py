@@ -10,7 +10,6 @@ fig.set_size_inches(22.5,4.5)
 import pylab as pl
 
 
-
 def testLowess(x, y):
 
     from lowess import lowess
@@ -90,3 +89,5 @@ if __name__ == '__main__':
 
     print "------------- Poly Regression ----------------"
     testPolyRegression(x, y)
+
+    

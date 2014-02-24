@@ -2,10 +2,10 @@
 #import pdb
 
 
-def read_json(file):
+def read_json(filename):
 
     import json
-    with open(file) as json_data:
+    with open(filename) as json_data:
         d = json.load(json_data)
         json_data.close()
     
