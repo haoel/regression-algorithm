@@ -29,7 +29,7 @@ def testLowess(x, y):
     for i in range(len(smoothy)):
         pl.plot(x, smoothy[i], label='Smooth('+str(f[i])+')')
     pl.legend()
-    pl.savefig('../imgs/lowess')
+    pl.savefig('./imgs/lowess')
     print "Successfully created picture file lowess.png"
 
 
@@ -45,7 +45,7 @@ def testLinerRegression(x,y):
 
     pl.plot(x,line1,'r-',x, line2, 'g-', x,y,'b-')
 
-    pl.savefig("../imgs/liner")
+    pl.savefig("./imgs/liner")
     print "Successfully created picture file liner.png"
 
 
@@ -66,7 +66,7 @@ def testPolyRegression(x, y):
 
     pl.legend()
 
-    pl.savefig("../imgs/poly")
+    pl.savefig("./imgs/poly")
     print "Successfully created picture file poly.png"
 
 
