@@ -7,13 +7,13 @@ Demo
 ----
 
 ####1. LOWESS
-![LOWESS] (./lowess.png?raw=true "LOWESS")
+![LOWESS] (./imgs/lowess.png?raw=true "LOWESS")
 
 ####2. Liner Regression
-![Liner Regression] (./liner.png?raw=true "Liner Regression")
+![Liner Regression] (./imgs/liner.png?raw=true "Liner Regression")
 
 ####3. Polynomial Regression
-![Polynomial Regression] (./poly.png?raw=true "Polynomial Regression")
+![Polynomial Regression] (./imgs/poly.png?raw=true "Polynomial Regression")
 
 
 Dependency
