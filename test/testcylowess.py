@@ -5,12 +5,13 @@ matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
 fig = plt.gcf()
-fig.set_size_inches(22.5,4.5)
+fig.set_size_inches(220.5,4.5)
 
 import pylab as pl
 
 
-def testLowess(x, y):
+
+def lowessProcess(x, y):
 
     from cylowess import fast_lowess
 
@@ -24,7 +25,10 @@ def testLowess(x, y):
         base = base + i*0.015
         f.append(base)
         smoothy.append( fast_lowess( x,y, frac=base, iter=1, delta=delta) )
- 
+    return f, smoothy
+     
+
+def savefile(x,y, smoothy, f):
     fig = plt.gcf()
 
     pl.clf()
@@ -47,10 +51,31 @@ if __name__ == '__main__':
 
     #x = np.asarray(cpu_time)
     y=[]
-    for i in xrange(10):
+    for i in xrange(30):
         y = y+cpu
     x = np.arange(0.0, len(y))
 
     print "----------------- LOWESS ---------------------"
-    testLowess(x, y)
+
+    def chunks(l, n):
+        for i in xrange(0, len(l), n):
+            yield l[i:i+n]
+
+    chunk_size = 1000
+    x_chunks = list(chunks(x,chunk_size))
+    y_chunks = list(chunks(y,chunk_size))
+    
+    lowessy=None
+    f =[]
+    for i in xrange(len(x_chunks)):
+        f, smoothy =  lowessProcess(x_chunks[i], y_chunks[i])
+        if (lowessy == None):
+            lowessy = smoothy
+        else:
+            #pdb.set_trace()
+            for i in range(len(smoothy)):
+                lowessy[i]=np.concatenate([lowessy[i],smoothy[i]])
+
+    savefile(x, y, lowessy, f)
+        
     
