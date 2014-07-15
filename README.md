@@ -15,6 +15,9 @@ Demo
 ####3. Polynomial Regression
 ![Polynomial Regression] (./test/imgs/poly.png?raw=true "Polynomial Regression")
 
+####4. Exponentially-Weighted Moving Average 
+![Exponentially-Weighted Moving Average with Window] (./test/imgs/emwa_window.png?raw=true "Exponentially-Weighted Moving Average with Window")
+![Holt Winters EWMA] (./test/imgs/holt_winters_average.png?raw=true "Holt Winters EWMA")
 
 Dependency
 ----------
