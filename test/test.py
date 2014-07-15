@@ -69,7 +69,33 @@ def testPolyRegression(x, y):
     pl.savefig("./imgs/poly")
     print "Successfully created picture file poly.png"
 
+def testHoltWintersEWMAverage(x, y):
 
+    from ewma import holt_winters_second_order_ewma
+
+    beta = 1.0/8.0;
+    span = 10.0
+    n = len(y)
+    ave_y = holt_winters_second_order_ewma(y, span, beta)
+    
+    pl.clf()
+    pl.plot(x, y, label="raw data")
+    pl.plot(x, ave_y, label="HoltWintersEMWA")
+    pl.legend()
+    pl.savefig("./imgs/holt_winters_average")
+    print "Successfully created picture file holt_winters_average.png"
+
+def testEWMAverage(x, y):
+
+    from ewma import ewma_with_window
+
+    ave_y =  ewma_with_window(y, 0.8, 50 )
+    pl.clf()
+    pl.plot(x, y, label="raw data")
+    pl.plot(x, ave_y, label="EWMAverage")
+    pl.legend()
+    pl.savefig("./imgs/emwa_window")
+    print "Successfully created picture file emwa_window.png" 
 
 if __name__ == '__main__':
     #pdb.set_trace()
@@ -90,4 +116,6 @@ if __name__ == '__main__':
     print "------------- Poly Regression ----------------"
     testPolyRegression(x, y)
 
-    
+    print "---- Exponential Weighted Moving Average -----"
+    testEWMAverage(x, y)   
+    testHoltWintersEWMAverage(x, y)
