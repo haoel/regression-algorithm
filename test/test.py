@@ -55,8 +55,8 @@ def testPolyRegression(x, y):
     from poly import poly_regression
 
     d = 4
-    print  poly_regression(x, y, d, True)
-    polyline = poly_regression(x, y, d)
+    polyline, polyfunc = poly_regression(x, y, d)
+    print polyfunc
 
 
     pl.clf()
