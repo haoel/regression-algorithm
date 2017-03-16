@@ -6,33 +6,33 @@ Including some experimental code for the LOWESS, Liner, and Polynomial Regressio
 Demo
 ----
 
-####1. LOWESS
-![LOWESS] (./test/imgs/lowess.png?raw=true "LOWESS")
+#### 1. LOWESS
+![LOWESS](./test/imgs/lowess.png?raw=true "LOWESS")
 
-####2. Liner Regression
-![Liner Regression] (./test/imgs/liner.png?raw=true "Liner Regression")
+#### 2. Liner Regression
+![Liner Regression](./test/imgs/liner.png?raw=true "Liner Regression")
 
-####3. Polynomial Regression
-![Polynomial Regression] (./test/imgs/poly.png?raw=true "Polynomial Regression")
+#### 3. Polynomial Regression
+![Polynomial Regression](./test/imgs/poly.png?raw=true "Polynomial Regression")
 
-####4. Exponentially-Weighted Moving Average 
-![Exponentially-Weighted Moving Average with Window] (./test/imgs/emwa_window.png?raw=true "Exponentially-Weighted Moving Average with Window")
-![Holt Winters EWMA] (./test/imgs/holt_winters_average.png?raw=true "Holt Winters EWMA")
+#### 4. Exponentially-Weighted Moving Average 
+![Exponentially-Weighted Moving Average with Window](./test/imgs/emwa_window.png?raw=true "Exponentially-Weighted Moving Average with Window")
+![Holt Winters EWMA](./test/imgs/holt_winters_average.png?raw=true "Holt Winters EWMA")
 
 Dependency
 ----------
 It's based on SciPy
 
-####1. Ubuntu
+#### 1. Ubuntu
 ```shell
 sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 ```
-####2. Redhat/CentOS
+#### 2. Redhat/CentOS
 ```shell
 sudo yum install numpy scipy python-matplotlib ipython python-pandas sympy python-nose
 ```
 
-####3. Windows/Mac
+#### 3. Windows/Mac
 The easiest way to install the packages of the SciPy stack is to download one of these Python distributions, which includes all the key packages:
 
 * [Anaconda](http://continuum.io/downloads.html): A free distribution for the SciPy stack. Supports Linux, Windows and Mac.
